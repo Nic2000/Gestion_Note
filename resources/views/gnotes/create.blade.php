@@ -90,7 +90,7 @@
                              <td>{{$el->Date_naiss}}</td>
                             <td>{{$el->Adresse}}</td>
                              <td>{{$el->Classe->Nom_classe}}</td>
-                            <td>  <a href="#" class="btn btn-success m-2" role="button">Modifier</a>
+                            <td>  <a href="{{route('gnotes.edit_eleve',[$el->id])}}" class="btn btn-success m-2" role="button">Modifier</a>
                             </td>
                             <td>   <a href="#" class="btn btn-danger m-2">Supprimer</a>
                             </td>

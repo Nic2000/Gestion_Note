@@ -24,6 +24,7 @@ Route::get('/create_prof', 'GNoteController@create_prof')->name('gnotes.create_p
 Route::get('/create_mat', 'GNoteController@create_mat')->name('gnotes.create_mat');
 Route::get('/create_note', 'GNoteController@create_note')->name('gnotes.create_note');
 Route::get('gnotes/delete/{id}', 'GNoteController@destroy')->name('gnotes.delete');
+Route::get('gnotes/edit_eleve/{id}', 'GNoteController@edit_eleve')->name('gnotes.edit_eleve');
 
 Route::post('/store_prof','GNoteController@store_prof')->name('gnotes.store_prof');
 Route::post('/store_mat','GNoteController@store_mat')->name('gnotes.store_mat');

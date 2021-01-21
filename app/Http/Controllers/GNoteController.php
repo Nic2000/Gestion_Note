@@ -92,6 +92,7 @@ class GNoteController extends Controller
        return redirect()->route('home');
 
     }
+
     //enregistrement des profs
     public function store_prof(Request $request){
         $prof = new Professeur();
@@ -151,6 +152,14 @@ class GNoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //modification des élèves
+    public function edit_eleve($id){
+        $eleve = Eleve::find($id);
+        return view('gnotes.edit_eleve',compact('eleve'));
+    }
+
+
+    //modification des notes
     public function edit($id)
     {
         $note  = Note::find($id);
