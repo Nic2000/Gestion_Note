@@ -6,28 +6,53 @@
         </div>
         <div class="card-body">
             <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-4">
             <form action="{{route('gnotes.store')}}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="name">Nom</label>
                     <input type="text" name="nom" class="form-control col-sm-6" aria-describedby="nameHelp">
                     <small class="form-text text-muted"></small>
+                    <!--affichage d'erreur-->
+                    @error('nom')
+                    <div class="col-xs-4">
+                        <span style = "color:#ff0000;"> {{$message}} </span>
+                    </div>
+                    @enderror
+
                 </div>
                 <div class="form-group">
                     <label for="first-name">Prenom</label>
                     <input type="text" name="prenom" class="form-control  col-sm-6" aria-describedby="nameHelp">
                     <small class="form-text text-muted"></small>
+                    <!--affichage d'erreur-->
+                    @error('prenom')
+                    <div class="col-xs-4">
+                        <span style = "color:#ff0000;"> {{$message}} </span>
+                    </div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="naissance">Date de naissance</label>
                     <input type="date" name="naiss" class="form-control col-sm-6" aria-describedby="nameHelp">
                     <small class="form-text text-muted"></small>
+                    <!--affichage d'erreur-->
+                    @error('naiss')
+                    <div class="col-xs-4">
+                        <span style = "color:#ff0000;"> {{$message}} </span>
+                    </div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="adresse">Adresse</label>
                     <input type="text" name="adresse" class="form-control col-sm-6" aria-describedby="nameHelp">
                     <small class="form-text text-muted"></small>
+                    <!--affichage d'erreur-->
+                    @error('adresse')
+                    <div class="col-xs-4">
+                        <span style = "color:#ff0000;"> {{$message}} </span>
+                    </div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label >Classe</label>
@@ -41,8 +66,11 @@
                 <button type="submit" class="btn btn-primary">Ajouter</button>
             </form>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-8">
                 <h4>Liste des élèves</h4>
+                <p>Rechercher par classe</p> <input type="text" class="form-control col-sm-4"><br>
+                <button type="submit" class="btn btn-primary" name="rechercher">Rechercher</button>
+                <br><br>
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <tr>
@@ -51,6 +79,8 @@
                             <td>Date de naissance</td>
                             <td>Adresse</td>
                             <td>Classe</td>
+                            <td>Modifier</td>
+                            <td>Supprimer</td>
                         </tr>
                         @foreach($listes as $el)
 
@@ -60,6 +90,10 @@
                              <td>{{$el->Date_naiss}}</td>
                             <td>{{$el->Adresse}}</td>
                              <td>{{$el->Classe->Nom_classe}}</td>
+                            <td>  <a href="#" class="btn btn-success m-2" role="button">Modifier</a>
+                            </td>
+                            <td>   <a href="#" class="btn btn-danger m-2">Supprimer</a>
+                            </td>
                         </tr>
                         @endforeach
 

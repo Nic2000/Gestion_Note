@@ -62,10 +62,24 @@ class GNoteController extends Controller
     //enregistrement des élèves
     public function store(Request $request)
     {
+        //condition de validation de formulaire
+        $request->validate([
+            'nom' => ["string"],
+            'prenom' =>  ["string"],
+            'adresse' => ["string"],
+            'naiss' => ["required"]
+        ],
+            [
+                'nom.string' => 'Seuls les caractères sont acceptés',
+                'prenom.string' => 'Seuls les caractères sont acceptés',
+                'adresse.string' => 'Seuls les caractères sont acceptés',
+                'naiss.required' => 'Entrez la date de naissance'
+            ]
+        );
         //récupérer id de la classe
         $id_classe = Classe::where('Nom_classe', $request->classe)->value('id');
        //enregistrement des données "input" dans la bd
-       $eleve = new Eleve();
+        $eleve = new Eleve();
         $eleve->Nom_eleve = $request->nom;
         $eleve->Prenom_eleve = $request->prenom;
         $eleve->Date_naiss = $request->naiss;
