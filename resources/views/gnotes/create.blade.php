@@ -34,7 +34,7 @@
                 </div>
                 <div class="form-group">
                     <label for="naissance">Date de naissance</label>
-                    <input type="date" name="naiss" class="form-control col-sm-6" aria-describedby="nameHelp">
+                    <input type="date" name="naiss" min="1962-01-01" max="2003-12-31" class="form-control col-sm-6" aria-describedby="nameHelp">
                     <small class="form-text text-muted"></small>
                     <!--affichage d'erreur-->
                     @error('naiss')
@@ -92,7 +92,7 @@
                              <td>{{$el->Classe->Nom_classe}}</td>
                             <td>  <a href="{{route('gnotes.edit_eleve',[$el->id])}}" class="btn btn-success m-2" role="button">Modifier</a>
                             </td>
-                            <td>   <a href="#" class="btn btn-danger m-2">Supprimer</a>
+                            <td>   <a href="{{route('gnotes.destroy_eleve',[$el->id])}}" class="btn btn-danger m-2">Supprimer</a>
                             </td>
                         </tr>
                         @endforeach

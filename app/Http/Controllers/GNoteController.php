@@ -155,7 +155,9 @@ class GNoteController extends Controller
     //modification des élèves
     public function edit_eleve($id){
         $eleve = Eleve::find($id);
-        return view('gnotes.edit_eleve',compact('eleve'));
+        $datas = Classe::all();
+        $listes = Eleve::with('Classe')->get();
+        return view('gnotes.edit_eleve',compact('eleve','datas','listes'));
     }
 
 
@@ -179,11 +181,28 @@ class GNoteController extends Controller
     {
         $note  = Note::find($id);
         $note -> update($request->all());
-
         //redirection
         return redirect()->route('gnotes.create_note');
     }
+    //validation de modification des élèves
+    public function update_eleve(Request $request, $id){
+        $eleve = Eleve::find($id);
+        $listes = Eleve::with('Classe')->get();
+        $eleve -> Nom_eleve = $request->get('nom');
+        $eleve -> Prenom_eleve = $request->get('prenom');
+        $eleve -> Naiss_eleve = $request->get('naiss');
+        $eleve -> Adresse = $request->get('adresse');
+        //redirection
+        $eleve->update();
+        return redirect()->route('gnotes.create');
 
+    }
+    public function destroy_eleve($id)
+    {
+        Eleve::destroy($id);
+        //redirection
+        return redirect()->route('gnotes.create');
+    }
     /**
      * Remove the specified resource from storage.
      *
