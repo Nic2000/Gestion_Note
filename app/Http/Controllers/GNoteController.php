@@ -190,8 +190,10 @@ class GNoteController extends Controller
         $listes = Eleve::with('Classe')->get();
         $eleve -> Nom_eleve = $request->get('nom');
         $eleve -> Prenom_eleve = $request->get('prenom');
-        $eleve -> Naiss_eleve = $request->get('naiss');
+        $eleve -> Date_naiss= $request->get('naiss');
         $eleve -> Adresse = $request->get('adresse');
+        $eleve -> Nom_classe = $request->get('classe');
+
         //redirection
         $eleve->update();
         return redirect()->route('gnotes.create');

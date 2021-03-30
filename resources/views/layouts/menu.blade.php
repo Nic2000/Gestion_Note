@@ -72,10 +72,38 @@
                 </div>
             </div>
         </nav>
-        
+        <div class="row justify-content-center">
+            <div class="col-xs">
+                <a href="{{ route('gnotes.create') }}" class="btn btn-primary m-2" role="button">Elèves</a>
+            </div>
+            <div class="col-xs">
+                <a href="{{ route('gnotes.create_prof') }}" class="btn btn-success m-2" role="button">Professeurs</a>
+            </div>
+            <div class="col-xs">
+                <a href="{{ route('gnotes.create_mat') }}" class="btn btn-warning m-2" role="button">Matières</a>
+            </div>
+
+            <div class="col-xs">
+                <a href="{{ route('gnotes.create_note') }}" class="btn btn-info m-2" role="button">Notes</a>
+            </div>
+        </div>
         <main class="py-4 container">
             @yield('content')
         </main>
     </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
